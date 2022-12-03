@@ -22,7 +22,6 @@ import TableRow from '@mui/material/TableRow';
 
 const Tags = () => {
    
-   const user = JSON.parse(localStorage.getItem('user'));
 
    const [checked ,setChecked] = useState([]);
    
@@ -65,27 +64,30 @@ const Tags = () => {
    }
     
    useEffect(()=> {
+
+    const getProblems =async() => {
+      
+      let tagString = '';
+ 
+      for(let tag of checked) {
+         const modifiedTag = tag.replace(' ', '%20') + ';';
+         tagString += modifiedTag;
+      }
+       
+      try{
+       const resProblems = await axios.get(`https://codeforces.com/api/problemset.problems?tags=${tagString}`);
+       setProblems(resProblems.data.result.problems);
+      }
+      catch(err){
+       console.log(err);
+      }
+       
+    }
+
      getProblems();
    },[checked]);
 
-   const getProblems =async() => {
-      
-     let tagString = '';
-
-     for(let tag of checked) {
-        const modifiedTag = tag.replace(' ', '%20') + ';';
-        tagString += modifiedTag;
-     }
-      
-     try{
-      const resProblems = await axios.get(`https://codeforces.com/api/problemset.problems?tags=${tagString}`);
-      setProblems(resProblems.data.result.problems);
-     }
-     catch(err){
-      console.log(err);
-     }
-      
-   }
+   
 
    const Item = styled(Paper)(() => ({
     textAlign: 'center',

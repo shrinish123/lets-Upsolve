@@ -6,7 +6,7 @@ import Paper from '@mui/material/Paper';
 import Grid from '@mui/material/Grid';
 import axios from 'axios';
 
-import { EnhancedTable,EnhancedTableHead } from './Tags';
+import { EnhancedTable} from './Tags';
 
 const Practice = () => {
 
@@ -21,7 +21,7 @@ const Practice = () => {
   // level2 > +200
   //level3 > +300
 
-  const Item = styled(Paper)(({ theme }) => ({
+  const Item = styled(Paper)(() => ({
     backgroundColor: '#1A2027',
     padding: '2rem',
     color: 'white',
@@ -30,34 +30,37 @@ const Practice = () => {
     textAlign:'center'
   }));
 
-  const TableItem = styled(Paper)(({ theme }) => ({
+  const TableItem = styled(Paper)(() => ({
     padding: '2rem',
     margin:'2rem',
   }));
 
 
   useEffect(()=> {
-     getProblems();
-  },[level]);
 
-  const getProblems = async() => {
+    const getProblems = async() => {
 
-    try{
-
-      const startRange = (rating - rating%100) + (level-1)*100;
-      const endRange = startRange + 100;
-
-      const problemsres = await axios.get(`https://codeforces.com/api/problemset.problems?tags=`);
-      let problemsArr = problemsres.data.result.problems;
-      problemsArr = problemsArr.filter((problem)=> problem.rating >= startRange && problem.rating <= endRange);
-   
-      setProblems(problemsArr);
-      
-
-    }catch(err){
-       console.log(err);
+      try{
+  
+        const startRange = (rating - rating%100) + (level-1)*100;
+        const endRange = startRange + 100;
+  
+        const problemsres = await axios.get(`https://codeforces.com/api/problemset.problems?tags=`);
+        let problemsArr = problemsres.data.result.problems;
+        problemsArr = problemsArr.filter((problem)=> problem.rating >= startRange && problem.rating <= endRange);
+     
+        setProblems(problemsArr);
+        
+  
+      }catch(err){
+         console.log(err);
+      }
     }
-  }
+
+     getProblems();
+  },[level,rating]);
+
+  
  
   
 
