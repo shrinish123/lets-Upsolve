@@ -1,70 +1,48 @@
-# Getting Started with Create React App
+# Lets UpSolve
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A web app to assist you with upsolving Coding contests on codeforces practice for the future contests to get better and improve performance ,and also get insights and Analysis of your current performance on codeforces.
 
-## Available Scripts
+# About 
 
-In the project directory, you can run:
+Currently the web app provides you with the problems to upsolve from your previous contests, provides you problems topic wise , and also provides you with a list of suggested problems to solve to improve your rating on codeforces.
+There is also an analysis board to show your current progress and get insights on your overall performance on codeforces.
 
-### `npm start`
+# Requirements
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+* HTML, CSS
+* ReactJS
+* Javascript
+* Material UI
+* Codeforces API
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
 
-### `npm test`
+# Setting up the Project
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+* Fork the Repository.
+* Clone the repository to your local machine
+```bash
+ git clone https://github.com/<your_username>/lets-Upsolve.git
+```
+* Change directory to Mumble 
+ ```bash
+ cd  lets-Upsolve
+ ```
+* To install the npm modules : 
+ ```bash
+ npm install
+ ```
+* To start running project on localhost :
+```bash
+ npm start
+ ```
+* Open localhost:3000 on your favorite browser.
+   
+# Contribution
 
-### `npm run build`
+Feel free to raise a issue or make a pull request to fix a bug or add a new feature. If you are new to open source you can first read about git by <a href="https://www.codecademy.com/learn/learn-git">Clicking here</a> 
+Also I have put up some good first issues for people new to development related to HTML, CSS. 
+For suggestions, I have already put up some issues,which you can work on.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+# Community Slack Channel
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+To get started, the first step is to meet the community. We use slack to communicate, and there the helpful community will guide you. Slack is an instant messaging service used by developers and users of GitHub. It uses chatrooms, where developers can join in and can talk about a particular topic.<a href="https://join.slack.com/t/letsupsolve/shared_invite/zt-1kv4yiqom-SW4SjJaZ8JTaqzxoT6tsbQ">Click Here </a> to join our Slack Workspace.
