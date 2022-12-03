@@ -7,6 +7,17 @@ A web app to assist you with upsolving Coding contests on codeforces practice fo
 Currently the web app provides you with the problems to upsolve from your previous contests, provides you problems topic wise , and also provides you with a list of suggested problems to solve to improve your rating on codeforces.
 There is also an analysis board to show your current progress and get insights on your overall performance on codeforces.
 
+# Preview 
+
+<img src="https://github.com/shrinish123/ImagesToHost/blob/main/img1.png" width="2000" height="500">
+
+<img src="https://github.com/shrinish123/ImagesToHost/blob/main/img2.png" width="2000" height="500">
+
+<img src="https://github.com/shrinish123/ImagesToHost/blob/main/img3.png" width="2000" height="500">
+
+<img src="https://github.com/shrinish123/ImagesToHost/blob/main/img4.png" width="2000" height="500">
+
+
 # Requirements
 
 * HTML, CSS
@@ -36,6 +47,8 @@ There is also an analysis board to show your current progress and get insights o
  npm start
  ```
 * Open localhost:3000 on your favorite browser.
+
+
    
 # Contribution
 
