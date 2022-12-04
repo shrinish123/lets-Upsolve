@@ -1,6 +1,6 @@
 # Lets UpSolve
 
-A web app to assist you with upsolving Coding contests on codeforces practice for the future contests to get better and improve performance ,and also get insights and Analysis of your current performance on codeforces. /n
+A web app to assist you with upsolving Coding contests on codeforces practice for the future contests to get better and improve performance ,and also get insights and Analysis of your current performance on codeforces. <br>
 Do star the repository if you like it :)
 
 # About 
