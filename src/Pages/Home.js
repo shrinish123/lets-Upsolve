@@ -56,7 +56,7 @@ const Home = () => {
         <>
         <Grid item xs={4}>
             <Item>
-            <Link to="/tags" element={<Tags/>} style ={linkStyle}>Practice Questions By Tags</Link>
+            <Link to="/Tags" element={<Tags/>} style ={linkStyle}>Practice Questions By Tags</Link>
             </Item>
         </Grid>
         </>)}
@@ -64,7 +64,7 @@ const Home = () => {
         (<>
         <Grid item xs={4}>
             <Item>
-            <Link to="/contests" element={<Contests/>} style ={linkStyle}>Upsolve Previous Contests</Link> 
+            <Link to="/Contests" element={<Contests/>} style ={linkStyle}>Upsolve Previous Contests</Link> 
             </Item>
         </Grid>
         </>)}
@@ -73,14 +73,14 @@ const Home = () => {
         (<>
         <Grid item xs={4}>
             <Item>
-            <Link to="/practice" element={<Practice/>} style ={linkStyle}>Suggested Practice</Link>
+            <Link to="/Practice" element={<Practice/>} style ={linkStyle}>Suggested Practice</Link>
             </Item>
         </Grid>
         </>)}
 
         <Grid item xs= {12}>
           <LargeItem>
-          <Link to="/analysis" element={<Analysis/>} style ={linkStyle}>Get Your Analysis</Link>
+          <Link to="/Analysis" element={<Analysis/>} style ={linkStyle}>Get Your Analysis</Link>
           </LargeItem>
         </Grid>
         

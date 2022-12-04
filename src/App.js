@@ -18,10 +18,10 @@ function App() {
     <Navbar/>
     <Routes>
     <Route path="/" element={<Home />} />
-    <Route path="/tags" element={<Tags />} />
-    <Route path="/contests" element={<Contests />} />
-    <Route path="/practice" element={<Practice />} />
-    <Route path="/analysis" element={<Analysis />} />
+    <Route path="/Tags" element={<Tags />} />
+    <Route path="/Contests" element={<Contests />} />
+    <Route path="/Practice" element={<Practice />} />
+    <Route path="/Analysis" element={<Analysis />} />
     {/* <Route path="*" element={<NotFound />} />  */}
     </Routes>
     </UserContextProvider>
