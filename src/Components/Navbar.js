@@ -20,7 +20,7 @@ const darkTheme = createTheme({
     mode: 'dark',
   },
 });
-const pages = ['Tags','Contests'];
+const pages = ['Tags'];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
 function ResponsiveAppBar() {
