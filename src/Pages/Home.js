@@ -13,6 +13,7 @@ import Grid from '@mui/material/Grid';
 import { styled } from '@mui/material/styles';
 
 import  UserContext  from '../Context/user-context';
+import Blogs from './Blogs';
 
 
 const Home = () => {
@@ -77,13 +78,19 @@ const Home = () => {
             </Item>
         </Grid>
         </>)}
-
-        <Grid item xs= {12}>
-          <LargeItem>
+        <Grid item xs= {4}>
+          <Item>
           <Link to="/analysis" element={<Analysis/>} style ={linkStyle}>Get Your Analysis</Link>
-          </LargeItem>
+          </Item>
         </Grid>
-        
+        { (
+        <>
+        <Grid item xs={4}>
+            <Item>
+            <Link to="/blogs" element={<Blogs/>} style ={linkStyle}>Blogs</Link>
+            </Item>
+        </Grid>
+        </>)}
         </Grid>
         </Box>
     </>
