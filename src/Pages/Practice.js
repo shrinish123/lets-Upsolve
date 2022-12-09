@@ -4,7 +4,10 @@ import { styled } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
 import Grid from '@mui/material/Grid';
+import Stepper from '@mui/material/Stepper';
+import Step from '@mui/material/Step';
 import axios from 'axios';
+import { StepButton } from '@mui/material';
 
 import { EnhancedTable} from './Tags';
 
@@ -16,19 +19,12 @@ const Practice = () => {
 
   const [level,setLevel] = useState(1);
   const [problems,setProblems] = useState([]);
+  const [activeStep, setActiveStep] = React.useState(0);
+  const steps = ['Level 1','Level 2','Level 3'];
 
   //level1 -- > rating%100 >  +100 
   // level2 > +200
   //level3 > +300
-
-  const Item = styled(Paper)(() => ({
-    backgroundColor: '#1A2027',
-    padding: '2rem',
-    color: 'white',
-    margin:'2rem',
-    cursor: 'pointer',
-    textAlign:'center'
-  }));
 
   const TableItem = styled(Paper)(() => ({
     padding: '2rem',
@@ -67,24 +63,24 @@ const Practice = () => {
   return (
     <>
      <Box >
-      <Grid container spacing={2}>
-        <Grid item xs={4}>
-          <Item onClick={()=> {setLevel(1)}}>Level 1 </Item>
-        </Grid>
-        <Grid item xs={4}>
-          <Item onClick={()=> {setLevel(2)}}>Level 2</Item>
-        </Grid>
-        <Grid item xs={4}>
-          <Item onClick={()=> {setLevel(3)}}>Level 3</Item>
-        </Grid>
+    
+      <div style={{padding : "64px"}}>
+      <Stepper nonLinear activeStep={activeStep}>
+        {steps.map((label, index) => (
+          <Step key={label}>
+            <StepButton color="inherit" onClick={()=> {setLevel(index); setActiveStep(index)}}>
+              {label}
+            </StepButton>
+          </Step>
+        ))}
+      </Stepper>
+      </div> 
         
         <Grid item xs={12}>
           <TableItem>
             <EnhancedTable problems={problems}/>
           </TableItem>
         </Grid>
-
-      </Grid>
     </Box>
 
     </>
