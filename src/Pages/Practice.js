@@ -6,7 +6,7 @@ import Paper from '@mui/material/Paper';
 import Grid from '@mui/material/Grid';
 import Stepper from '@mui/material/Stepper';
 import Step from '@mui/material/Step';
-import axios, { AxiosHeaders } from 'axios';
+import axios from 'axios';
 import { StepButton } from '@mui/material';
 
 import { EnhancedTable} from './Tags';
