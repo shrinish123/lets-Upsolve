@@ -22,6 +22,8 @@ import TableRow from '@mui/material/TableRow';
 
 const Tags = () => {
    
+   const user = JSON.parse(localStorage.getItem('user'));
+   const {handle} = user;
 
    const [checked ,setChecked] = useState([]);
    
@@ -87,7 +89,23 @@ const Tags = () => {
      getProblems();
    },[checked]);
 
-   
+   const [solvedProblems,setSolvedProblems] = useState([]);
+   useEffect(()=> {
+     
+     const getSolvedProblems = async() => {
+       try {
+         const submissions = await axios.get(`https://codeforces.com/api/user.status?handle=${handle}`);
+         const submissionsArr = submissions.data.result;
+         const acSubmissions = submissionsArr.filter(submission => submission.verdict === "OK");
+         const solvedProblemsArr = acSubmissions.map(acSubmission => acSubmission.problem.contestId+acSubmission.problem.index);
+         setSolvedProblems(solvedProblemsArr);
+       } catch(err) {
+         console.log(err);
+       }
+     }
+  
+     getSolvedProblems();
+   },[handle]);
 
    const Item = styled(Paper)(() => ({
     textAlign: 'center',
@@ -103,7 +121,7 @@ const Tags = () => {
         </Grid>
         <Grid item xs={8}>
           <Item>
-          <EnhancedTable problems={problems}/>
+          <EnhancedTable problems={problems} solvedProblems={solvedProblems}/>
           </Item>
         </Grid>
       </Grid>
@@ -148,7 +166,7 @@ const customList = (tags,handleToggle,checked) => (
 );
 
 
-export const EnhancedTable = ({problems}) => {
+export const EnhancedTable = ({problems, solvedProblems}) => {
 
  console.log(problems);
   const [page, setPage] = React.useState(0);
@@ -187,10 +205,14 @@ export const EnhancedTable = ({problems}) => {
                 .map((problem, index) => {
                   const labelId = `enhanced-table-checkbox-${index}`;
 
+                  const problemCode = problem.contestId+problem.index;
+                  let bgColor = "";
+                  if(solvedProblems.findIndex(solvedProblem => problemCode===solvedProblem)!==-1) bgColor = "green";
+
                   return (
                     <TableRow
                       hover
-                      style = {{cursor: 'pointer'}}
+                      style = {{cursor: 'pointer', backgroundColor: bgColor}}
                       onClick={(event) => handleClick(event, problem)}
                       tabIndex={-1}
                       key={problem.name}
