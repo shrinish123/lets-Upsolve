@@ -83,7 +83,6 @@ const Home = () => {
           <Link to="/analysis" element={<Analysis/>} style ={linkStyle}>Get Your Analysis</Link>
           </Item>
         </Grid>
-        
         { (
         <>
         <Grid item xs={4}>
