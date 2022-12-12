@@ -15,7 +15,7 @@ const Practice = () => {
 
 
   const user = JSON.parse(localStorage.getItem('user'));
-  const {rating} = user;
+  const {rating,handle} = user;
 
   const [level,setLevel] = useState(1);
   const [problems,setProblems] = useState([]);
@@ -56,9 +56,23 @@ const Practice = () => {
      getProblems();
   },[level,rating]);
 
-  
+  const [solvedProblems,setSolvedProblems] = useState([]);
+  useEffect(()=> {
+    
+    const getSolvedProblems = async() => {
+      try {
+        const submissions = await axios.get(`https://codeforces.com/api/user.status?handle=${handle}`);
+        const submissionsArr = submissions.data.result;
+        const acSubmissions = submissionsArr.filter(submission => submission.verdict === "OK");
+        const solvedProblemsArr = acSubmissions.map(acSubmission => acSubmission.problem.contestId+acSubmission.problem.index);
+        setSolvedProblems(solvedProblemsArr);
+      } catch(err) {
+        console.log(err);
+      }
+    }
  
-  
+    getSolvedProblems();
+  },[handle]);
 
   return (
     <>
@@ -78,7 +92,7 @@ const Practice = () => {
         
         <Grid item xs={12}>
           <TableItem>
-            <EnhancedTable problems={problems}/>
+            <EnhancedTable problems={problems} solvedProblems={solvedProblems}/>
           </TableItem>
         </Grid>
     </Box>
