@@ -78,17 +78,17 @@ const Home = () => {
             </Item>
         </Grid>
         </>)}
-        <Grid item xs= {4}>
-          <Item>
+        <Grid item xs= {12}>
+          <LargeItem>
           <Link to="/analysis" element={<Analysis/>} style ={linkStyle}>Get Your Analysis</Link>
-          </Item>
+          </LargeItem>
         </Grid>
         { (
         <>
-        <Grid item xs={4}>
-            <Item>
+        <Grid item xs={12}>
+            <LargeItem>
             <Link to="/blogs" element={<Blogs/>} style ={linkStyle}>Blogs</Link>
-            </Item>
+            </LargeItem>
         </Grid>
         </>)}
         </Grid>
