@@ -207,7 +207,7 @@ export const EnhancedTable = ({problems, solvedProblems}) => {
 
                   const problemCode = problem.contestId+problem.index;
                   let bgColor = "";
-                  if(solvedProblems.findIndex(solvedProblem => problemCode===solvedProblem)!==-1) bgColor = "green";
+                  if(solvedProblems.findIndex(solvedProblem => problemCode===solvedProblem)!==-1) bgColor = "#b4e4c9";
 
                   return (
                     <TableRow
