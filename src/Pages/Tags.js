@@ -20,6 +20,8 @@ import TableHead from '@mui/material/TableHead';
 import TablePagination from '@mui/material/TablePagination';
 import TableRow from '@mui/material/TableRow';
 
+import useGetSolvedProblems from '../hooks/useGetSolvedProblems';
+
 const Tags = () => {
    
    const user = JSON.parse(localStorage.getItem('user'));
@@ -89,23 +91,8 @@ const Tags = () => {
      getProblems();
    },[checked]);
 
-   const [solvedProblems,setSolvedProblems] = useState([]);
-   useEffect(()=> {
-     
-     const getSolvedProblems = async() => {
-       try {
-         const submissions = await axios.get(`https://codeforces.com/api/user.status?handle=${handle}`);
-         const submissionsArr = submissions.data.result;
-         const acSubmissions = submissionsArr.filter(submission => submission.verdict === "OK");
-         const solvedProblemsArr = acSubmissions.map(acSubmission => acSubmission.problem.contestId+acSubmission.problem.index);
-         setSolvedProblems(solvedProblemsArr);
-       } catch(err) {
-         console.log(err);
-       }
-     }
-  
-     getSolvedProblems();
-   },[handle]);
+   
+   const solvedProblems = useGetSolvedProblems(handle);
 
    const Item = styled(Paper)(() => ({
     textAlign: 'center',
@@ -207,7 +194,7 @@ export const EnhancedTable = ({problems, solvedProblems}) => {
 
                   const problemCode = problem.contestId+problem.index;
                   let bgColor = "";
-                  if(solvedProblems.findIndex(solvedProblem => problemCode===solvedProblem)!==-1) bgColor = "green";
+                  if(solvedProblems.findIndex(solvedProblem => problemCode===solvedProblem)!==-1) bgColor = "#b4e4c9";
 
                   return (
                     <TableRow
