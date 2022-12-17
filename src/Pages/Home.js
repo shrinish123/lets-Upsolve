@@ -14,7 +14,7 @@ import { styled } from '@mui/material/styles';
 
 import  UserContext  from '../Context/user-context';
 import Blogs from './Blogs';
-
+import ContestSearch from './ContestSearch';
 
 const Home = () => {
 
@@ -88,6 +88,14 @@ const Home = () => {
         <Grid item xs={12}>
             <LargeItem>
             <Link to="/blogs" element={<Blogs/>} style ={linkStyle}>Blogs</Link>
+            </LargeItem>
+        </Grid>
+        </>)}
+        { (
+        <>
+        <Grid item xs={12}>
+            <LargeItem>
+            <Link to="/searchcontest" element={<ContestSearch/>} style ={linkStyle}>Search for a contest</Link>
             </LargeItem>
         </Grid>
         </>)}
