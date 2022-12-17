@@ -8,6 +8,7 @@ import Contests from './Pages/Contests';
 import Practice from './Pages/Practice';
 import Analysis from './Pages/Analysis';
 import Blogs from './Pages/Blogs';
+import ContestSearch from './Pages/ContestSearch';
 import {UserContextProvider} from './Context/user-context'
 
 
@@ -23,6 +24,7 @@ function App() {
     <Route path="/practice" element={<Practice />} />
     <Route path="/analysis" element={<Analysis />} />
     <Route path = "/blogs" element={<Blogs />} />
+    <Route path = "/searchcontest" element={<ContestSearch />} />
     {/* <Route path="*" element={<NotFound />} />  */}
     </Routes>
     </UserContextProvider>
