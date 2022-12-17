@@ -55,33 +55,41 @@ const Home = () => {
         { (
         <>
         <Grid item xs={4}>
+            <Link to="/tags" style={linkStyle}>
             <Item>
             <Link to="/tags" element={<Tags/>} style ={linkStyle}>Practice Questions By Tags</Link>
             </Item>
+            </Link>
         </Grid>
         </>)}
         {Object.keys(userCtx.user).length !== 0 &&
         (<>
         <Grid item xs={4}>
+            <Link to="/contests" style={linkStyle}>
             <Item>
             <Link to="/contests" element={<Contests/>} style ={linkStyle}>Upsolve Previous Contests</Link> 
             </Item>
+            </Link>
         </Grid>
         </>)}
         
         {Object.keys(userCtx.user).length !== 0 &&
         (<>
         <Grid item xs={4}>
+            <Link to="/practice" style ={linkStyle}>
             <Item>
             <Link to="/practice" element={<Practice/>} style ={linkStyle}>Suggested Practice</Link>
             </Item>
+            </Link>
         </Grid>
         </>)}
 
         <Grid item xs= {12}>
+          <Link to="/analysis" style ={linkStyle}>
           <LargeItem>
           <Link to="/analysis" element={<Analysis/>} style ={linkStyle}>Get Your Analysis</Link>
           </LargeItem>
+          </Link>
         </Grid>
         
         </Grid>
