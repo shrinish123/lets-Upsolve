@@ -11,7 +11,7 @@ import Grid from '@mui/material/Unstable_Grid2';
 
 // const {CanvasJS,CanvasJSChart} = CanvasJSReact;
 // charts(FusionCharts);
-import { Bar } from 'react-chartjs-2';
+
 import Barchart from '../Components/Barchart';
 
 
