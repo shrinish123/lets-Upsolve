@@ -181,7 +181,7 @@ const Analysis = () => {
         <Grid xs={12}>
         <SmallItem>
          <div >
-          <Barchart data={graphData.verdictData} title={ `Verdict Distribution ${user.handle}`}/>
+          <Barchart data={graphData.verdictData} title={`Verdict Distribution ${user.handle}`}/>
         </div>
           </SmallItem>
           
