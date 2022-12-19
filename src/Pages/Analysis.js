@@ -5,12 +5,14 @@ import { styled } from '@mui/material/styles';
 import Paper from '@mui/material/Paper';
 import Grid from '@mui/material/Unstable_Grid2';
 
-import FusionCharts from "fusioncharts";
-import charts from "fusioncharts/fusioncharts.charts";
-import ReactFusioncharts from "react-fusioncharts";
+// import FusionCharts from "fusioncharts";
+// import charts from "fusioncharts/fusioncharts.charts";
+// import ReactFusioncharts from "react-fusioncharts";
 
 // const {CanvasJS,CanvasJSChart} = CanvasJSReact;
-charts(FusionCharts);
+// charts(FusionCharts);
+
+import Barchart from '../Components/Barchart';
 
 
 const Analysis = () => {
@@ -73,7 +75,7 @@ const Analysis = () => {
                     }
                      tags.push(tagObj);
                 })
-                console.log(verdictsMap);
+                // console.log(verdictsMap);
     
                 verdictsMap.forEach((count,verdict)=> {
                     
@@ -84,7 +86,7 @@ const Analysis = () => {
                     }
                      verdicts.push(verdictObj);
                 })
-                console.log(verdicts)
+                // console.log(verdicts)
     
                setGraphData({tagData:tags,verdictData:verdicts});
             }
@@ -100,32 +102,32 @@ const Analysis = () => {
 
     console.log(graphData.verdictData);
 
-    const dataSource = {
-        chart: {
-          caption: `Tags Solved By ${user.handle}`,
-          subcaption: "",
-          showvalues: "1",
-          showpercentintooltip: "1",
-          numberprefix: "",
-          enablemultislicing: "1",
-          theme: "candy",
-        },
-        data: graphData.tagData
-      };
+    // const dataSource = {
+    //     chart: {
+    //       caption: `Tags Solved By ${user.handle}`,
+    //       subcaption: "",
+    //       showvalues: "1",
+    //       showpercentintooltip: "1",
+    //       numberprefix: "",
+    //       enablemultislicing: "1",
+    //       theme: "candy",
+    //     },
+    //     data: graphData.tagData
+    //   };
 
-      const verdictDataSource = {
-        chart: {
-          caption: `Verdict Distribution ${user.handle}`,
-          subcaption: "",
-          showvalues: "1",
-          showpercentintooltip: "1",
-          numberprefix: "",
-          enablemultislicing: "1",
-          theme: "candy",
-        },
-        data: graphData.verdictData
-      };
-      
+    //   const verdictDataSource = {
+    //     chart: {
+    //       caption: `Verdict Distribution ${user.handle}`,
+    //       subcaption: "",
+    //       showvalues: "1",
+    //       showpercentintooltip: "1",
+    //       numberprefix: "",
+    //       enablemultislicing: "1",
+    //       theme: "candy",
+    //     },
+    //     data: graphData.verdictData
+    //   };
+      console.log(graphData.tagData);
    
     // const options = {
     //     animationEnabled: true,
@@ -161,35 +163,28 @@ const Analysis = () => {
         boxShadow:'3px 3px 3px 2px rgba(0, 0, 0, 0.2)'
       }));  
 
+
+
   return (
     <>
      <Grid container spacing={2}>
-        {/* <Grid xs={12}>
-          <LargeItem>
-          <CanvasJSChart options = {options} />
-          </LargeItem>
-        </Grid> */}
+        
         <Grid xs={12}>
           <LargeItem>
-          <ReactFusioncharts
-            type="pie3d"
-            width="80%"
-            height="80%"
-            dataFormat="JSON"
-            dataSource={dataSource}
-        />
+        
+        <div >
+          <Barchart data={graphData.tagData} title={`Tags Solved By ${user.handle}`}/>
+        </div>
           </LargeItem>
+          
         </Grid>
         <Grid xs={12}>
         <SmallItem>
-          <ReactFusioncharts
-            type="pie3d"
-            width="80%"
-            height="25%"
-            dataFormat="JSON"
-            dataSource={verdictDataSource}
-        />
+         <div >
+          <Barchart data={graphData.verdictData} title={`Verdict Distribution ${user.handle}`}/>
+        </div>
           </SmallItem>
+          
       </Grid>
       <Grid xs={4}>
         
