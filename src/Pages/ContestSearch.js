@@ -8,8 +8,11 @@ import Paper from '@mui/material/Paper';
 import Grid from '@mui/material/Grid';
 import axios from 'axios';
 import{ ContestProblems} from './ContestProblems';
+import useGetSolvedProblems from '../hooks/useGetSolvedProblems';
 const ContestSearch = () => {
   
+    const user = JSON.parse(localStorage.getItem('user'));
+    const {handle} = user;
     const [contestName,setContestName] = useState("");
     const [contestProblems,setContestProblems] = useState([]);
     const [isSubmitted,setSubmitStatus] = useState(false);
@@ -23,7 +26,7 @@ const ContestSearch = () => {
       }));
    
       const handleContestSubmit =async (e) => {
-        let contestRes = await axios.get(" https://codeforces.com/api/contest.list?gym=false");
+        let contestRes = await axios.get(" https://codeforces.com/api/contest.list?gym=");
         let contestList = contestRes.data.result;
         contestList = contestList.filter((contest) => contest.name === contestName && contest.phase === "FINISHED");  
         console.log(contestList); 
@@ -41,6 +44,8 @@ const ContestSearch = () => {
         }
         setSubmitStatus(true);      
       }
+
+      const solvedProblems = useGetSolvedProblems(handle);
 
       return (
         <>
@@ -61,7 +66,7 @@ const ContestSearch = () => {
             
             <Grid item xs={12}>
               <TableItem>
-                {<ContestProblems contestName = { contestName} contestProblems = { contestProblems}/>}
+                {<ContestProblems contestName = { contestName} contestProblems = { contestProblems} solvedProblems = { solvedProblems}/>}
               </TableItem>
             </Grid>
     
