@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState} from "react";
 import Paper from "@mui/material/Paper";
 import Box from "@mui/material/Box";
 import TableCell from "@mui/material/TableCell";
@@ -11,7 +11,7 @@ import TableHead from "@mui/material/TableHead";
 
 function EnhancedTable({ problems }) {
   console.log(problems);
-  const [page, setPage] = React.useState(0);
+  const [page, setPage] = useState(0);
   const rowsPerPage = 10;
 
   const handleClick = (e, problem) => {
