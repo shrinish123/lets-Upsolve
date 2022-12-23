@@ -16,7 +16,6 @@ import Barchart from '../Components/Barchart';
 
 
 const Analysis = () => {
-  
     const user = JSON.parse(localStorage.getItem('user'));
     const [graphData,setGraphData] = useState({});
    
