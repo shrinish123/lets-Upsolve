@@ -1,4 +1,4 @@
-import React, { useState} from "react";
+import React, { useState } from "react";
 import Paper from "@mui/material/Paper";
 import Box from "@mui/material/Box";
 import TableCell from "@mui/material/TableCell";
@@ -8,10 +8,17 @@ import TableBody from "@mui/material/TableBody";
 import TableContainer from "@mui/material/TableContainer";
 import TablePagination from "@mui/material/TablePagination";
 import TableHead from "@mui/material/TableHead";
+import Switch from "@mui/material/Switch";
+import Typography from "@mui/material/Typography";
+import { useContext } from "react";
+import UserContext from "../Context/user-context";
 
 function EnhancedTable({ problems }) {
+  const userCtx = useContext(UserContext);
+
   console.log(problems);
   const [page, setPage] = useState(0);
+
   const rowsPerPage = 10;
 
   const handleClick = (e, problem) => {
@@ -58,7 +65,9 @@ function EnhancedTable({ problems }) {
                       <TableCell component="th" id={labelId} scope="row">
                         {problem.name}
                       </TableCell>
-                      <TableCell align="left">{problem.rating}</TableCell>
+                      {userCtx.rating && (
+                        <TableCell align="left">{problem.rating}</TableCell>
+                      )}
                     </TableRow>
                   );
                 })}
@@ -91,6 +100,7 @@ function EnhancedTable({ problems }) {
 export default EnhancedTable;
 
 export const EnhancedTableHead = () => {
+  const userCtx = useContext(UserContext);
   const headCells = [
     {
       id: "problem id",
@@ -100,7 +110,7 @@ export const EnhancedTableHead = () => {
       id: "problem",
       label: "Problem",
     },
-    {
+    userCtx.rating && {
       id: "rating",
       label: "Problem Rating",
     },
@@ -108,6 +118,17 @@ export const EnhancedTableHead = () => {
 
   return (
     <TableHead>
+      <Box
+        style={{
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "flex-start",
+          padding: 10,
+        }}
+      >
+        <Typography style={{ fontSize: "10px" }}>Show Rating</Typography>
+        <Switch checked={userCtx.rating} onClick={userCtx.toggleRating} />
+      </Box>
       <TableRow>
         {headCells.map((headCell) => (
           <TableCell key={headCell.id} align={"left"} padding={"normal"}>
