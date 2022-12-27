@@ -5,10 +5,13 @@ import { toast } from "react-toastify";
 const UserContext = React.createContext({
   user: {},
   setCurrentUser: () => {},
+  rating: null,
+  toggleRating: () => {},
 });
 
 export const UserContextProvider = (props) => {
   const [user, setUser] = useState({});
+  const [rating, setRating] = useState(true);
 
   const setCurrentUser = async (e, handle) => {
     e.preventDefault();
@@ -26,11 +29,18 @@ export const UserContextProvider = (props) => {
     }
   };
 
+  const toggleRating = (e) => {
+    e.preventDefault();
+    setRating((prev) => !prev);
+  };
+
   return (
     <UserContext.Provider
       value={{
         user: user,
         setCurrentUser: setCurrentUser,
+        rating: rating,
+        toggleRating: toggleRating,
       }}
     >
       {props.children}
