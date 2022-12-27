@@ -15,6 +15,7 @@ import { styled } from '@mui/material/styles';
 import  UserContext  from '../Context/user-context';
 import Blogs from './Blogs';
 import ContestSearch from './ContestSearch';
+import UnsolvedContests from './UnsolvedContests';
 
 const Home = () => {
 
@@ -96,6 +97,14 @@ const Home = () => {
         <Grid item xs={12}>
             <LargeItem>
             <Link to="/searchcontest" element={<ContestSearch/>} style ={linkStyle}>Search for a contest</Link>
+            </LargeItem>
+        </Grid>
+        </>)}
+        {Object.keys(userCtx.user).length !== 0 && (
+        <>
+        <Grid item xs={12}>
+            <LargeItem>
+            <Link to="/unsolvedcontest" element={<UnsolvedContests/>} style ={linkStyle}>Get unsolved contests</Link>
             </LargeItem>
         </Grid>
         </>)}
