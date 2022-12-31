@@ -5,12 +5,12 @@ import { styled } from '@mui/material/styles';
 import Paper from '@mui/material/Paper';
 import Grid from '@mui/material/Unstable_Grid2';
 
-import FusionCharts from "fusioncharts";
-import charts from "fusioncharts/fusioncharts.charts";
-import ReactFusioncharts from "react-fusioncharts";
-
+//import FusionCharts from "fusioncharts";
+//import charts from "fusioncharts/fusioncharts.charts";
+//import ReactFusioncharts from "react-fusioncharts";
+import Barchart from '../Components/Barchart';
 // const {CanvasJS,CanvasJSChart} = CanvasJSReact;
-charts(FusionCharts);
+//charts(FusionCharts);
 
 
 const Analysis = () => {
@@ -32,6 +32,8 @@ const Analysis = () => {
     
                 const verdictsMap = new Map();
                 const verdicts = [];
+                const actagsMap = new Map();
+                const actags = [];
                 
                 for(let submission of submissions){
     
@@ -62,8 +64,20 @@ const Analysis = () => {
                         }
                     }
                     
+                    if(submission.verdict === "OK"){
+                      if(submission.problem.tags[0]){
+                        if(!actagsMap.has(submission.problem.tags[0])){
+                          actagsMap.set(submission.problem.tags[0],1);
+                          
+                      }else{
+                          let countac = actagsMap.get(submission.problem.tags[0]);
+                          countac++;
+                          actagsMap.set(submission.problem.tags[0],countac);
+                          
+                      }
+                      }
+                    }
                 }
-    
                 tagsMap.forEach((count,tag)=> {
                     
                     const tagObj = {
@@ -85,8 +99,19 @@ const Analysis = () => {
                      verdicts.push(verdictObj);
                 })
                 console.log(verdicts)
-    
-               setGraphData({tagData:tags,verdictData:verdicts});
+                if(submissions.length > 0){
+                  let counttot  = submissions.length;
+                actagsMap.forEach((count,tag) => {
+                    let perc = (count*100.0)/counttot;
+                    const actagObj = {
+                      label: tag,
+                      value: perc, 
+                    }
+                    actags.push(actagObj);
+                  
+                })    
+              }
+              setGraphData({tagData:tags,verdictData:verdicts,actagData:actags});
             }
             catch(err){
                console.log(err);
@@ -100,33 +125,45 @@ const Analysis = () => {
 
     console.log(graphData.verdictData);
 
-    const dataSource = {
-        chart: {
-          caption: `Tags Solved By ${user.handle}`,
-          subcaption: "",
-          showvalues: "1",
-          showpercentintooltip: "1",
-          numberprefix: "",
-          enablemultislicing: "1",
-          theme: "candy",
-        },
-        data: graphData.tagData
-      };
+   // const dataSource = {
+     //   chart: {
+       //   caption: `Tags Solved By ${user.handle}`,
+       //   subcaption: "",
+       //   showvalues: "1",
+       //   showpercentintooltip: "1",
+       //   numberprefix: "",
+       //   enablemultislicing: "1",
+       //   theme: "candy",
+       // },
+      //  data: graphData.tagData
+     // };
 
-      const verdictDataSource = {
-        chart: {
-          caption: `Verdict Distribution ${user.handle}`,
-          subcaption: "",
-          showvalues: "1",
-          showpercentintooltip: "1",
-          numberprefix: "",
-          enablemultislicing: "1",
-          theme: "candy",
-        },
-        data: graphData.verdictData
-      };
+   //   const verdictDataSource = {
+     //   chart: {
+     //     caption: `Verdict Distribution ${user.handle}`,
+     //     subcaption: "",
+     //     showvalues: "1",
+     //   showpercentintooltip: "1",
+     //   numberprefix: "",
+     //   enablemultislicing: "1",
+    //   theme: "candy",
+      //  },
+      //  data: graphData.verdictData
+     // };
       
-   
+     // const acDataSource = {
+      //  chart: {
+      //    caption: `Percentage of AC Submissions Tag-wise By ${user.handle}`,
+       //   subcaption: "",
+      //    showvalues: "1",
+      //    showpercentintooltip: "1",
+      //    numberprefix: "",
+      //    numbersuffix: "%",
+      //    enablemultislicing: "1",
+      //    theme: "candy",
+     //   },
+     //   data: graphData.actagData
+    //  };
     // const options = {
     //     animationEnabled: true,
     //     exportEnabled: true,
@@ -171,24 +208,23 @@ const Analysis = () => {
         </Grid> */}
         <Grid xs={12}>
           <LargeItem>
-          <ReactFusioncharts
-            type="pie3d"
-            width="80%"
-            height="80%"
-            dataFormat="JSON"
-            dataSource={dataSource}
-        />
+          <div >
+          <Barchart data={graphData.tagData} title={`Tags Solved By ${user.handle}`}/>
+        </div>
           </LargeItem>
         </Grid>
         <Grid xs={12}>
         <SmallItem>
-          <ReactFusioncharts
-            type="pie3d"
-            width="80%"
-            height="25%"
-            dataFormat="JSON"
-            dataSource={verdictDataSource}
-        />
+        <div >
+          <Barchart data={graphData.verdictData} title={`Verdict Distribution ${user.handle}`}/>
+        </div>
+          </SmallItem>
+      </Grid>
+      <Grid xs={12}>
+      <SmallItem>
+        <div >
+          <Barchart data={graphData.actagData} title={`Percenatge AC-submissions Tagwise by ${user.handle}`}/>
+        </div>
           </SmallItem>
       </Grid>
       <Grid xs={4}>
