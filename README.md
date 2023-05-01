@@ -53,10 +53,10 @@ There is also an analysis board to show your current progress and get insights o
    
 # Contribution
 
-Feel free to raise a issue or make a pull request to fix a bug or add a new feature. If you are new to open source you can first read about git by <a href="https://www.codecademy.com/learn/learn-git">Clicking here</a> 
+Feel free to raise a issue or make a pull request to fix a bug or add a new feature. If you are new to open source you can first read about git over <a href="https://www.codecademy.com/learn/learn-git">here</a> 
 Also I have put up some good first issues for people new to development related to HTML, CSS. 
 For suggestions, I have already put up some issues,which you can work on.
 
 # Community Slack Channel
 
-To get started, the first step is to meet the community. We use slack to communicate, and there the helpful community will guide you. Slack is an instant messaging service used by developers and users of GitHub. It uses chatrooms, where developers can join in and can talk about a particular topic.<a href="https://join.slack.com/t/letsupsolve/shared_invite/zt-1kv4yiqom-SW4SjJaZ8JTaqzxoT6tsbQ">Click Here </a> to join our Slack Workspace.
+To get started, the first step is to meet the community. We use slack to communicate, and there the helpful community will guide you. Slack is an instant messaging service used by developers and users of GitHub. It uses chatrooms, where developers can join in and can talk about a particular topic. Join our Slack Workspace <a href="https://join.slack.com/t/letsupsolve/shared_invite/zt-1kv4yiqom-SW4SjJaZ8JTaqzxoT6tsbQ"> here </a>.
